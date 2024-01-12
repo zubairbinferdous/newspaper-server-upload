@@ -45,11 +45,10 @@
         </div>
     </form>
 </x-guest-layout> --}}
-@extends('fontend.master')
-@section('master')
-    <!-- user-area  -->
+{{-- @extends('fontend.master')
+@section('master') --}}
 
-    <div class="container m50 mb50">
+{{-- <div class="container m50 mb50">
         <div class="row">
             <div class="col-md-12">
                 <div class="login-area">
@@ -75,10 +74,10 @@
                         </form>
                     </div>
                     <div class="login-pic-area">
-                        {{-- <img src="{{ asset('fontend/image/add/login.webp') }}" alt=""> --}}
+                      
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-@endsection
+    </div> --}}
+{{-- @endsection --}}

@@ -16,12 +16,12 @@ return new class extends Migration
             $table->integer('category_id');
             $table->integer('sub_id')->nullable();
             $table->string('status')->default("0");
-            $table->integer('site_id')->nullable();
+            $table->string('site_id')->nullable();
             $table->string('product_name');
             $table->string('user_name')->nullable();
             $table->string('product_img');
             $table->string('product_img2')->nullable();
-            $table->text('product_message');
+            $table->longText('product_message');
             $table->timestamps();
         });
     }

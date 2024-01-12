@@ -26,10 +26,6 @@ use App\Http\Controllers\orderController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('fontend.index');
-// });
-
 // home area 
 Route::get('/', [homeController::class, 'home'])->name('homePage');
 // Route::get('/product/', [homeController::class, 'product'])->name('product');
@@ -52,28 +48,11 @@ Route::middleware('auth')->group(function () {
 
 });
 
+// singlePost 
+Route::get('/singlePost', [homeController::class, 'singlePost'])->name('singlePost');
 
-// add to cart
 
-// Route::post('/dcart/data/store/{id}', [homeController::class, 'addToCart']);
-// Route::get('/add/to/cart/{id}', [homeController::class, 'addToCartData']);
-// Route::get('product/single/{id}', [homeController::class, 'singleProduct'])->name('singleProduct');
-// Route::get('/product/mini/count', [homeController::class, 'miniProduct']);
-// Route::get('product/category/{id}', [homeController::class, 'catWiseProduct']);
-// Route::get('product/subCategory/{id}', [homeController::class, 'SubWiseProduct']);
 
-// Route::middleware(['auth', 'role:user'])->group(function () {
-//     Route::get('/view_cart', [homeController::class, 'cartView'])->name('cartView');
-//     Route::get('/get-cart-product', [homeController::class, 'GetCartProduct']);
-//     Route::get('/cart-remove/{rowId}', [homeController::class, 'CartRemove']);
-//     Route::get('/cart-decrement/{rowId}', [homeController::class, 'CartDecrement']);
-//     Route::get('/cart-increment/{rowId}', [homeController::class, 'CartIncrement']);
-//     Route::get('/checkout', [homeController::class, 'checkout'])->name('checkout');
-//     Route::post('/checkout/store', [checkOutController::class, 'checkoutStore'])->name('checkout.store');
-//     Route::post('/checkout/order', [checkOutController::class, 'cashOrder'])->name('cash.order');
-//     Route::get('/UserOrder', [orderController::class, 'UserOrder'])->name('UserOrder');
-//     Route::get('/orderUserView/{id}', [orderController::class, 'orderUserView'])->name('orderUserView');
-// });
 
 require __DIR__ . '/auth.php';
 

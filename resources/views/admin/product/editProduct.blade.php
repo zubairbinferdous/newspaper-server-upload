@@ -54,9 +54,27 @@
                                 <label class="form-label" for="multicol-country">Area Select</label>
                                 <select name="site_id" id="multicol-country" class="select2 form-select"
                                     data-allow-clear="true">
-                                    <option value='{{ 0 }}'> Null </option>
-                                    <option value='{{ 1 }}'> Best Sellers </option>
-                                    <option value='{{ 2 }}'> New Arrival </option>
+                                    <option value='{{ $product->site_id }}'> {{ $product->site_id }} </option>
+                                    <option value='{{ 'Main_slider' }}'> Main slider </option>
+                                    <option value='{{ 'Main_area_with_out_slider' }}'> Main area with out slider </option>
+                                    <option value='{{ 'Today_news' }}'> Today_news </option>
+                                    <option value='{{ 'Today_News_main' }}'> Today News main </option>
+                                    <option value='{{ 'Today_happen ' }}'> Today happen </option>
+                                    <option value='{{ 'tech_area ' }}'> Tech area</option>
+                                    <option value='{{ 'Bangladesh_right_side ' }}'> Bangladesh right side</option>
+                                    <option value='{{ 'Bangladesh_right_single_data ' }}'> Bangladesh right single data
+                                    </option>
+                                    <option value='{{ 'Bangladesh_main_data ' }}'> Bangladesh main data</option>
+                                    <option value='{{ 'Bangladesh_left_side ' }}'> Bangladesh left side</option>
+                                    <option value='{{ 'Bangladesh_left_single_data ' }}'> Bangladesh left single data
+                                    </option>
+
+                                    <option value="software_right">software right</option>
+                                    <option value="software_left ">software left </option>
+                                    <option value="software_main">software main</option>
+
+                                    <option value="brand_story">brand story</option>
+                                    <option value="brand_right">brand rignt</option>
                                 </select>
                             </div>
 
