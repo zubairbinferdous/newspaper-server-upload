@@ -14,6 +14,7 @@ use App\Http\Controllers\productController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\checkOutController;
 use App\Http\Controllers\orderController;
+use App\Http\Controllers\videoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,11 +35,10 @@ Route::get('/', [homeController::class, 'home'])->name('homePage');
 
 Route::get('/dashboard', function () {
     $id = Auth::user()->id;
-    $orders = Order::where('user_id', $id)->orderBy('id', 'DESC')->get();
+    // $orders = Order::where('user_id', $id)->orderBy('id', 'DESC')->get();
     // return view('admin.order.userOrder', compact('orders'));
-    return view('dashboard', compact('orders'));
-})
-    ->middleware(['auth', 'verified'])
+    return view('dashboard');
+})->middleware(['auth', 'verified'])
     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -48,8 +48,11 @@ Route::middleware('auth')->group(function () {
 
 });
 
-// singlePost 
-Route::get('/singlePost', [homeController::class, 'singlePost'])->name('singlePost');
+// single Post 
+Route::get('singlePost/{id}', [homeController::class, 'singlePost']);
+// category Post 
+Route::get('post/categoryPage/{id}', [homeController::class, 'categoryPage']);
+
 
 
 
@@ -57,15 +60,33 @@ Route::get('/singlePost', [homeController::class, 'singlePost'])->name('singlePo
 require __DIR__ . '/auth.php';
 
 // admin
+
+
+
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
 });
 
-Route::get('/admin/login', [AdminController::class, 'Adminlogin']);
+Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('adminLogin');
+
 
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
+
+
+    // video area add_video
+    Route::controller(videoController::class)->group(function () {
+        Route::get('/add_video', 'addVideo')->name('add_video');
+        Route::post('/store/video', 'storeBrand')->name('video_upload');
+        Route::get('/all/video', 'allVideo')->name('all_video');
+        Route::get('/delete/video/{id}', 'deleteVideoData')->name('video.delete');
+    });
+
+    Route::get('/add_upload', [videoController::class, 'showForm'])->name('show.upload.form');
+    Route::post('/store/upload', [videoController::class, 'upload'])->name('upload.video');
+
     // brand
     Route::controller(brandController::class)->group(function () {
         Route::get('/add/brand', 'addBrand')->name('add_brand');
@@ -74,6 +95,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/all/brand/{id}', 'brandEdit')->name('edit.brand');
         Route::post('/update/brand', 'updateBrand')->name('brand.update');
         Route::get('/delete/brand/{id}', 'deleteBrand')->name('brand.delete');
+
+        // password user.store
+        Route::post('/store/user', 'storeUser')->name('user.store');
+        Route::get('/addUser', 'addUser')->name('addUser');
+        Route::get('/allUser', 'allUser')->name('allUser');
+        Route::get('/delete/user/{id}', 'deleteUser')->name('user.delete');
     });
 
     // category

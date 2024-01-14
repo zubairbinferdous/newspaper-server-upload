@@ -12,6 +12,8 @@
                                     <th>SL</th>
                                     <th>Post Title</th>
                                     <th>Post image 1</th>
+                                    <th>Site Area</th>
+                                    <th>Category</th>
                                     <th>Post image 2</th>
                                     <th>Post Test area</th>
                                     <th>Action</th>
@@ -24,16 +26,25 @@
                                         <td> {{ $key + 1 }} </td>
                                         @php
                                             $longText = $item->product_name;
-                                            $longMassege = $item->product_message;
+                                            $longMassege = strip_tags($item->product_message);
                                         @endphp
+
+
                                         <td>{{ Str::limit($longText, 20) }}</td>
+
                                         <td><img src="{{ asset($item->product_img) }}" alt=""
                                                 style="width: 60px; height:60px">
                                         </td>
+                                        <td>{{ $item->site_id }}</td>
+
+                                        <td>{{ $item->catagory->cate_name }}</td>
+
+
                                         <td><img src="{{ asset($item->product_img2) }}" alt=""
                                                 style="width: 60px; height:60px">
                                         </td>
-                                        <td>{{ Str::limit($longMassege, 20) }}</td>
+
+                                        <td id="">{{ Str::limit($longMassege, 20) }}</td>
                                         <td>
                                             <div class="dropdown">
                                                 <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -60,4 +71,21 @@
 
         </div>
     </div>
+
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Hello',
+            tabsize: 2,
+            height: 320,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
 @endsection

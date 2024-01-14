@@ -15,10 +15,12 @@ class AdminController extends Controller
     {
         return view('admin.admin_index');
     }
+
     public function Adminlogin()
     {
         return view('admin.admin_login');
     }
+
 
     public function AdminDestroy(Request $request)
     {

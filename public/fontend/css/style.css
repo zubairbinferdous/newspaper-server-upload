@@ -966,16 +966,29 @@ footer {
 }
 .blog-img img {
     border-radius: 10px;
+    width: 100%;
+    height: 60%;
 }
 .category-area-blog {
     margin: 10px 0px;
 }
-.category-area-blog a {
-    padding: 3px 21px;
-    font-size: 12px;
+.category-area-blog h6 {
+    padding: 2px 44px;
+    font-size: 27px;
     border: 1px solid #1d1c1c;
     border-radius: 5px;
-    color: #333;
+    color: #523535;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    transition: all 300ms;
+}
+.category-area-blog a {
+    padding: 2px 44px;
+    font-size: 14px;
+    border: 1px solid #1d1c1c;
+    border-radius: 5px;
+    color: #523535;
     text-decoration: none;
     display: inline-block;
     margin-top: 10px;
@@ -1108,4 +1121,27 @@ textarea:focus {
 
 .p-300 {
     padding: 5% 0%;
+}
+
+.new-area-two-left-side a {
+    font-size: 24px;
+}
+.note-insert .note-btn i {
+    display: none !important;
+}
+
+.logout {
+    background-color: #000000;
+    color: #e40808;
+    padding: 5px 20px;
+    font-size: 16px;
+}
+
+.blog-border-bottom {
+    border-bottom: 2px solid rgb(45, 45, 45);
+    margin-top: 10px;
+}
+
+.category-area-blog {
+    margin: 20px 0px;
 }

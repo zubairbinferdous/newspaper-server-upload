@@ -24,22 +24,29 @@ class homeController extends Controller
         return view('fontend.product');
     }
 
-    public function catWiseProduct(Request $request, $id)
-    {
-        $productWise = product::where('status', 1)
-            ->where('category_id', $id)
-            ->orderBy('id', 'DESC')
-            ->get();
-        return view('fontend.cateWise', compact('productWise'));
-    }
+    // public function catWiseProduct(Request $request, $id)
+    // {
+    //     $productWise = product::where('status', 1)
+    //         ->where('category_id', $id)
+    //         ->orderBy('id', 'DESC')
+    //         ->get();
+    //     return view('fontend.cateWise', compact('productWise'));
+    // }
 
     // public function singlePost($id)
     // {
     //     $product = product::findOrFail($id);
     //     return view('fontend.product', compact('product'));
     // }
-    public function singlePost()
+    public function singlePost($id)
     {
-        return view('fontend.single');
+        $product = product::findOrFail($id);
+        return view('fontend.single', compact('product'));
+    }
+
+    public function categoryPage($id)
+    {
+        $productWise = product::where('status', 1)->where('category_id', $id)->get();
+        return view('fontend.category', compact('productWise'));
     }
 }

@@ -53,24 +53,34 @@
                                     <option value='{{ '0' }}'> Null </option>
                                     <option value='{{ 'main_slider' }}'> Main slider </option>
                                     <option value='{{ 'main_area_with_out_slider' }}'> Main area with out slider </option>
-                                    <option value='{{ 'Today_news' }}'> Today_news </option>
-                                    <option value='{{ 'Today_News_main' }}'> Today News main </option>
-                                    <option value='{{ 'Today_happen ' }}'> Today happen </option>
+                                    <option value='{{ 'today_news' }}'> Today_news </option>
+                                    <option value='{{ 'today_News_main' }}'> Today News main </option>
+                                    <option value='{{ 'today_happen ' }}'> Today happen </option>
                                     <option value='{{ 'tech_area ' }}'> Tech area</option>
-                                    <option value='{{ 'Bangladesh_right_side ' }}'> Bangladesh right side</option>
-                                    <option value='{{ 'Bangladesh_right_single_data ' }}'> Bangladesh right single data
+                                    <option value='{{ 'bangladesh_right_side ' }}'> Bangladesh right side</option>
+                                    <option value='{{ 'bangladesh_right_single_data ' }}'> Bangladesh right single data
                                     </option>
-                                    <option value='{{ 'Bangladesh_main_data ' }}'> Bangladesh main data</option>
-                                    <option value='{{ 'Bangladesh_left_side ' }}'> Bangladesh left side</option>
-                                    <option value='{{ 'Bangladesh_left_single_data ' }}'> Bangladesh left single data
+                                    <option value='{{ 'bangladesh_main_data ' }}'> Bangladesh main data</option>
+                                    <option value='{{ 'bangladesh_left_side ' }}'> Bangladesh left side</option>
+                                    <option value='{{ 'bangladesh_left_single_data ' }}'> Bangladesh left single data
                                     </option>
 
-                                    <option value="software_right">software right</option>
-                                    <option value="software_left ">software left </option>
-                                    <option value="software_main">software main</option>
+                                    <option value="software_right">Software right</option>
+                                    <option value="software_left ">Software left </option>
+                                    <option value="software_main">Software main</option>
 
-                                    <option value="brand_story">brand story</option>
-                                    <option value="brand_right">brand rignt</option>
+                                    <option value="brand_story">Brand story</option>
+                                    <option value="brand_right">Brand rignt</option>
+
+                                    <option value="gadgets_right">Gadgets left</option>
+                                    <option value="gadgets_left">Gadgets left</option>
+
+                                    <option value="game">Game</option>
+
+                                    <option value="related_news">Related news</option>
+
+                                    <option value="sideBar_one">SideBar one</option>
+                                    <option value="sideBar_two">SideBar two</option>
                                 </select>
                             </div>
 

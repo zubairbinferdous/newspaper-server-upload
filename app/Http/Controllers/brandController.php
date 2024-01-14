@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Brand;
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 use Image;
 use Toastr;
 
@@ -113,9 +115,35 @@ class brandController extends Controller
         return redirect()->route('all_brand');
     }
 
-    // category
 
+    // add user 
 
+    public function addUser()
+    {
+        return view('admin.user.add_user');
+    }
 
+    public function storeUser(Request $request)
+    {
+        User::create([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
 
+        return redirect()->route('addUser');
+    }
+
+    public function deleteUser($id)
+    {
+        User::findOrFail($id)->delete();
+        return redirect()->route('allUser');
+    }
+
+    public function allUser()
+    {
+        $user = User::latest()->where('username', 'editor')->get();
+        return view('admin.user.all_user', compact('user'));
+    }
 }

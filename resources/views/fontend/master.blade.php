@@ -38,7 +38,7 @@
 
                 <div class="col-md-6">
                     <div class="logo-area logo_broder">
-                        <a href="">
+                        <a href="{{ route('homePage') }}">
                             <img src="{{ asset('fontend/images/techtalk.png') }}" alt="Techtalk BD">
                         </a>
                     </div>
@@ -56,7 +56,8 @@
                             <div class="col-md-12">
                                 <div class="side-area-data border-top text-center">
                                     <ul class="header-link">
-                                        <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                                        <li><a href="https://www.facebook.com/techtalk.bd.56" target="_blank"><i
+                                                    class="fa-brands fa-facebook"></i></a></li>
                                         <li><a href=""><i class="fa-brands fa-square-instagram"></i></a></li>
                                         <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
                                         <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
@@ -73,69 +74,34 @@
 
     <!-- menu-area  -->
 
+    @php
+        $catagory = App\Models\catagory::orderBy('id', 'ASC')
+            ->limit(12)
+            ->get();
+    @endphp
     <menu>
         <div class="container">
             <div class="row ">
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">প্রচ্ছদ</a>
+                @foreach ($catagory as $item)
+                    {{-- <div class="col-md-2">
+                    <div class="data-cate">
+                        <a href="{{ url('product/category/' . $item->id) }}">
+                            <img src="{{ asset($item->category_img) }}" alt="" style="width:250px;">
+                        </a>
+                        <div class="itam">
+                            <h3>
+                                <a href="{{ url('product/category/' . $item->id) }}">{{ $item->cate_name }}</a>
+                            </h3>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">লাইফ স্টাইল</a>
+                </div> --}}
+                    <div class="col-md-1 p0">
+                        <div class="category">
+                            <a href="{{ url('post/categoryPage/' . $item->id) }}">{{ $item->cate_name }}</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">বাংলাদেশ</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">আন্তর্জাতিক</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">গ্যাজেটস </a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">সফটওয়্যার</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">টেকটক</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">বিনোদন </a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">গেইম</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">ব্যান্ডের গল্প</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">ফিচার</a>
-                    </div>
-                </div>
-                <div class="col-md-1 p0">
-                    <div class="category">
-                        <a href="">অনলাইন </a>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
     </menu>
@@ -345,6 +311,74 @@
         }
         getCurrentDateTimeInBangla()
     </script>
+    {{-- <script>
+        function convertToBanglaDigits(input) {
+            const digitsMap = {
+                '0': '০',
+                '1': '১',
+                '2': '২',
+                '3': '৩',
+                '4': '৪',
+                '5': '৫',
+                '6': '৬',
+                '7': '৭',
+                '8': '৮',
+                '9': '৯'
+            };
+
+            return input.replace(/[0-9]/g, (match) => digitsMap[match]);
+        }
+
+        function getBanglaMonthName(monthIndex) {
+            const monthsInBangla = [
+                'জানুয়ারি',
+                'ফেব্রুয়ারি',
+                'মার্চ',
+                'এপ্রিল',
+                'মে',
+                'জুন',
+                'জুলাই',
+                'আগস্ট',
+                'সেপ্টেম্বর',
+                'অক্টোবর',
+                'নভেম্বর',
+                'ডিসেম্বর'
+            ];
+
+            return monthsInBangla[monthIndex];
+        }
+
+        function getBanglaDayName(dayIndex) {
+            const daysInBangla = [
+                'শনিবার',
+                'রবিবার',
+                'সোমবার',
+                'মঙ্গলবার',
+                'বুধবার',
+                'বৃহস্পতিবার',
+                'শুক্রবার'
+            ];
+
+            return daysInBangla[dayIndex];
+        }
+
+        function getCurrentDateTimeInBangla() {
+            const options = {
+                timeZone: 'Asia/Dhaka',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            };
+
+            const now = new Date();
+            const banglaDateTime = now.toLocaleString('en-US', options).replace(/[0-9]/g, (match) => convertToBanglaDigits(
+                match));
+            const data_add = document.getElementById("date_area_bangla").innerText = banglaDateTime;
+        }
+
+        // Call the function to get and display the current date and time in Bangla
+        getCurrentDateTimeInBangla();
+    </script> --}}
     <script>
         $('#summernote').summernote({
             placeholder: 'Hello Bootstrap 4',
