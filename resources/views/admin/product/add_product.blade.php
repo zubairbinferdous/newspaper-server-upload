@@ -102,7 +102,7 @@
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-upload-file">Post pic 2</label>
                                 <input type="file" name="product_img2" class="form-control"
-                                    id="basic-default-upload-file" required />
+                                    id="basic-default-upload-file" />
                             </div>
 
                             <div class="row mb-3">

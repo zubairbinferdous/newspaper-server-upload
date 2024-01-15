@@ -29,36 +29,66 @@ class productController extends Controller
 
     public function storeProduct(Request $request)
     {
-        $img = $request->file('product_img');
-        $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
-        Image::make($img)
-            ->resize(900, 900)
-            ->save('upload/product/product_img/' . $name_gen);
-        $save_url = 'upload/product/product_img/' . $name_gen;
+        if ($request->file('product_img2')) {
 
-        $img2 = $request->file('product_img2');
-        $name_gen2 = hexdec(uniqid()) . '.' . $img2->getClientOriginalExtension();
-        Image::make($img2)
-            ->resize(900, 900)
-            ->save('upload/product/product_img/' . $name_gen2);
-        $save_url2 = 'upload/product/product_img/' . $name_gen2;
+            $img = $request->file('product_img');
+            $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)
+                ->resize(900, 900)
+                ->save('upload/product/product_img/' . $name_gen);
+            $save_url = 'upload/product/product_img/' . $name_gen;
 
-        product::insertGetId([
+            $img2 = $request->file('product_img2');
+            $name_gen2 = hexdec(uniqid()) . '.' . $img2->getClientOriginalExtension();
+            Image::make($img2)
+                ->resize(900, 900)
+                ->save('upload/product/product_img/' . $name_gen2);
+            $save_url2 = 'upload/product/product_img/' . $name_gen2;
 
-            'category_id' => $request->category_id,
-            'sub_id' => $request->sub_id,
-            'site_id' => $request->site_id,
-            'product_name' => $request->product_name,
-            'product_img' => $save_url,
-            'product_img2' => $save_url2,
-            'product_message' => $request->product_message,
-            'created_at' => Carbon::now(),
-            'status' => 1,
 
-        ]);
+            product::insertGetId([
+                'category_id' => $request->category_id,
+                'sub_id' => $request->sub_id,
+                'site_id' => $request->site_id,
+                'product_name' => $request->product_name,
+                'product_img' => $save_url,
+                'product_img2' => $save_url2,
+                'product_message' => $request->product_message,
+                'created_at' => Carbon::now(),
+                'status' => 1,
 
-        Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
-        return redirect()->route('allProduct');
+            ]);
+
+            Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
+            return redirect()->route('allProduct');
+        }
+
+        if ($request->file('product_img')) {
+
+            $img = $request->file('product_img');
+            $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)
+                ->resize(600, 500)
+                ->save('upload/product/product_img/' . $name_gen);
+            $save_url = 'upload/product/product_img/' . $name_gen;
+
+
+            product::insertGetId([
+
+                'category_id' => $request->category_id,
+                'sub_id' => $request->sub_id,
+                'site_id' => $request->site_id,
+                'product_name' => $request->product_name,
+                'product_img' => $save_url,
+                'product_message' => $request->product_message,
+                'created_at' => Carbon::now(),
+                'status' => 1,
+
+            ]);
+
+            Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
+            return redirect()->route('allProduct');
+        }
     }
 
     public function productEdit($id)
