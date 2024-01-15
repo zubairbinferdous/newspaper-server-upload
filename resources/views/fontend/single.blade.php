@@ -28,8 +28,10 @@
 
                         <div class="row">
                             <div class="blog-img">
-                                <img src="{{ asset($product->product_img2) }}" alt="" class="img-fluid"
-                                    style="height:500px">
+                                @if ($product->product_img2)
+                                    <img src="{{ asset($product->product_img2) }}" alt="" class="img-fluid"
+                                        style="height:500px">
+                                @endif
                             </div>
                         </div>
 

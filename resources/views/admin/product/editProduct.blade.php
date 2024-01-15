@@ -91,13 +91,13 @@
 
 
                             <div class="mb-3">
-                                <label class="form-label" for="basic-default-upload-file">Post pic 1</label>
+                                <label class="form-label" for="basic-default-upload-file">Post feature image one</label>
                                 <input type="file" name="product_img" class="form-control" id="basic-default-upload-file"
                                     required />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="basic-default-upload-file">Post pic 2</label>
+                                <label class="form-label" for="basic-default-upload-file">Post feature image two</label>
                                 <input type="file" name="product_img2" class="form-control"
                                     id="basic-default-upload-file" required />
                             </div>

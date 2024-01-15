@@ -217,7 +217,7 @@ menu {
 }
 .new-data-one img {
     width: 100%;
-    height: 100%;
+    height: 170px;
 }
 
 .new-data-area {
@@ -249,14 +249,15 @@ menu {
     background-color: rgba(0, 0, 0, 0.378);
 }
 
-.new-data-area2 p {
+.new-data-area2 a {
     position: absolute;
     bottom: 4px;
     padding: 10px;
-    font-size: 15px;
+    font-size: 16px;
     color: aliceblue;
     text-align: start;
-    font-weight: 400;
+    font-weight: 500;
+    text-decoration: none;
 }
 
 /* running-news  */
@@ -365,7 +366,6 @@ menu {
     text-decoration: none;
     font-size: 13px;
     color: black;
-    padding-top: 18px;
     display: inline-block;
 }
 .new-area-two-left-side p {
@@ -1144,4 +1144,79 @@ textarea:focus {
 
 .category-area-blog {
     margin: 20px 0px;
+}
+.m10 {
+    margin-bottom: 10px;
+}
+
+.new-area-two-left-side img {
+    width: 100%;
+    height: 170px;
+}
+.new-area-two-left-side .link_open {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    transition: all 300ms;
+}
+
+.new-area-two-center-side img {
+    width: 100%;
+    height: 400px;
+}
+
+.new-area-two-center-side a {
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 21px;
+    color: black;
+    padding-top: 16px;
+    display: inline-block;
+}
+
+.new-area-two-center-side span {
+    margin-top: 0px;
+    display: block;
+    font-size: 14px;
+}
+
+.new-area-two-center-side span {
+    margin-top: 0px;
+    display: block;
+    font-size: 17px;
+}
+
+.new-area-two-center-side p {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 20px 0px;
+    transition: all 300ms;
+}
+
+.new-area-two-center-side span {
+    margin-top: 0px;
+    display: block;
+    font-size: 17px;
+}
+
+.new-area-two-center-side p {
+    font-size: 25px;
+    font-weight: bold;
+    padding: 1px 0px;
+    transition: all 300ms;
+}
+
+.new-area-two-left-side img {
+    width: 100%;
+    height: 146px;
+}
+
+.right-side-news a {
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 300ms;
+    padding-top: 22px;
+    text-decoration: none;
+    display: inline-block;
+    color: #1d1c1c;
 }

@@ -547,7 +547,7 @@
                                 <script>
                                     document.write(new Date().getFullYear());
                                 </script>
-                                , made with ❤️ by <a href="https://pixinvent.com" target="_blank"
+                                , made with ❤️ by <a href="https://techtalkbd.com/" target="_blank"
                                     class="fw-semibold">Tech Talk</a>
                             </div>
                             <div>

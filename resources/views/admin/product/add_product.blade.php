@@ -72,7 +72,7 @@
                                     <option value="brand_story">Brand story</option>
                                     <option value="brand_right">Brand rignt</option>
 
-                                    <option value="gadgets_right">Gadgets left</option>
+                                    <option value="gadgets_right">Gadgets right</option>
                                     <option value="gadgets_left">Gadgets left</option>
 
                                     <option value="game">Game</option>
@@ -94,13 +94,13 @@
                             </div> --}}
 
                             <div class="mb-3">
-                                <label class="form-label" for="basic-default-upload-file">Post pic 1</label>
+                                <label class="form-label" for="basic-default-upload-file">Post feature image one</label>
                                 <input type="file" name="product_img" class="form-control" id="basic-default-upload-file"
                                     required />
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label" for="basic-default-upload-file">Post pic 2</label>
+                                <label class="form-label" for="basic-default-upload-file">Post feature image two</label>
                                 <input type="file" name="product_img2" class="form-control"
                                     id="basic-default-upload-file" />
                             </div>
