@@ -79,6 +79,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // home manager
     Route::get('/home/manager/', [managerController::class, 'homeLogo'])->name('manager');
+    Route::POST('/add/header/logo/', [managerController::class, 'header'])->name('header.store');
+    Route::POST('/add/footer/logo/', [managerController::class, 'footer'])->name('footer.store');
 
     // video area add_video
     Route::controller(videoController::class)->group(function () {
