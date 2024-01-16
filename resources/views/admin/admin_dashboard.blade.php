@@ -242,13 +242,8 @@
                             </a>
                             <ul class="menu-sub">
                                 <li class="menu-item">
-                                    <a href="" class="menu-link">
-                                        <div data-i18n="Header Area">Header Area</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="" class="menu-link">
-                                        <div data-i18n="Footer Area">Footer Area</div>
+                                    <a href="{{ route('manager') }}" class="menu-link">
+                                        <div data-i18n="Add Control">Add Control</div>
                                     </a>
                                 </li>
                             </ul>
@@ -263,18 +258,24 @@
                             <ul class="menu-sub">
                                 <li class="menu-item">
                                     <a href="{{ route('add_video') }}" class="menu-link">
-                                        <div data-i18n="add youtube video">add youtube video</div>
+                                        <div data-i18n="add youtube video">Add youtube video</div>
                                     </a>
                                 </li>
                                 <li class="menu-item">
                                     <a href="{{ route('all_video') }}" class="menu-link">
-                                        <div data-i18n="all youtube video">all youtube video</div>
+                                        <div data-i18n="all youtube video">All youtube video</div>
                                     </a>
                                 </li>
 
                                 <li class="menu-item">
                                     <a href="{{ route('show.upload.form') }}" class="menu-link">
-                                        <div data-i18n="add video">add video</div>
+                                        <div data-i18n="add video">Add video</div>
+                                    </a>
+                                </li>
+
+                                <li class="menu-item">
+                                    <a href="{{ route('allSelfVideo') }}" class="menu-link">
+                                        <div data-i18n="all video">All video</div>
                                     </a>
                                 </li>
                             </ul>
@@ -481,7 +482,7 @@
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
-                                        <a class="dropdown-item" href="pages-account-settings-account.html">
+                                        <a class="dropdown-item" href="{{ route('userData') }}">
                                             <div class="d-flex">
                                                 <div class="flex-shrink-0 me-3">
                                                     <div class="avatar avatar-online">
@@ -500,15 +501,9 @@
                                         <div class="dropdown-divider"></div>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{{ route('password.store') }}">
+                                        <a class="dropdown-item" href="{{ route('user.password') }}">
                                             <i class="ti ti-user-check me-2 ti-sm"></i>
                                             <span class="align-middle">password</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="pages-account-settings-account.html">
-                                            <i class="ti ti-settings me-2 ti-sm"></i>
-                                            <span class="align-middle">Settings</span>
                                         </a>
                                     </li>
                                     <li>

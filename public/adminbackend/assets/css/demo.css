@@ -141,3 +141,24 @@ a {
     width: 600px;
     margin: 172px auto;
 }
+
+.mt-150 {
+    margin-top: 50px;
+}
+
+.update_user {
+    background-color: #202024;
+    display: inline-block;
+    text-align: center;
+    padding: 13px 0px;
+    color: #fff;
+    font-weight: bold;
+}
+.update_password {
+    background-color: #202024;
+    display: inline-block;
+    text-align: center;
+    padding: 5px 10px;
+    color: #fff;
+    font-weight: bold;
+}

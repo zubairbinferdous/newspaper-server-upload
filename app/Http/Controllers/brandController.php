@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Brand;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Image;
 use Toastr;
 
@@ -145,5 +146,51 @@ class brandController extends Controller
     {
         $user = User::latest()->where('username', 'editor')->get();
         return view('admin.user.all_user', compact('user'));
+    }
+
+
+    public function userData()
+    {
+        $id =  Auth::user()->id;
+        $user = User::findOrFail($id);
+        return view('admin.user.userProfile', compact('user'));
+    }
+    public function userDataInfo($id)
+    {
+        $user = User::findOrFail($id);
+        return view('admin.user.updateUser', compact('user'));
+    }
+
+    public function updateDataInfo(Request $request)
+    {
+        $user_id = $request->id;
+        if ($user_id) {
+            User::findOrFail($user_id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+            return redirect()->route('userData');
+        } else {
+            return 'hello error';
+        }
+    }
+    public function updateDataInfoPass(Request $request)
+    {
+        $user_id = $request->id;
+        if ($user_id) {
+            User::findOrFail($user_id)->update([
+                'password' => $request->password,
+            ]);
+            return redirect()->route('userData');
+        } else {
+            return 'hello error';
+        }
+    }
+
+    public function userPassword()
+    {
+        $id =  Auth::user()->id;
+        $user = User::findOrFail($id);
+        return view('admin.user.password', compact('user'));
     }
 }

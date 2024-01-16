@@ -76,13 +76,13 @@
 
     @php
         $catagory = App\Models\catagory::orderBy('id', 'ASC')
-            ->limit(12)
+            ->limit(11)
             ->get();
     @endphp
     <menu>
         <div class="container">
             <div class="row ">
-                @foreach ($catagory as $item)
+                
                     {{-- <div class="col-md-2">
                     <div class="data-cate">
                         <a href="{{ url('product/category/' . $item->id) }}">
@@ -90,11 +90,19 @@
                         </a>
                         <div class="itam">
                             <h3>
+                                 
                                 <a href="{{ url('product/category/' . $item->id) }}">{{ $item->cate_name }}</a>
                             </h3>
                         </div>
                     </div>
                 </div> --}}
+                                    <div class="col-md-1 p0">
+                        <div class="category">
+                            <a href="{{ route('homePage') }}">হোম</a>
+                          
+                        </div>
+                    </div>
+                @foreach ($catagory as $item)
                     <div class="col-md-1 p0">
                         <div class="category">
                             <a href="{{ url('post/categoryPage/' . $item->id) }}">{{ $item->cate_name }}</a>

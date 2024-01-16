@@ -128,12 +128,28 @@ class productController extends Controller
                 unlink($old_img);
             }
 
-            $img2 = $request->file('product_img2');
-            $name_gen2 = hexdec(uniqid()) . '.' . $img2->getClientOriginalExtension();
-            Image::make($img2)
+            product::findOrFail($product_id)->update([
+                'category_id' => $request->category_id,
+                'sub_id' => $request->sub_id,
+                'site_id' => $request->site_id,
+                'product_name' => $request->product_name,
+                'product_img' => $save_url,
+                'product_message' => $request->product_message,
+                'created_at' => Carbon::now(),
+                'status' => 1,
+            ]);
+
+            Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
+
+            return redirect()->route('allProduct');
+        }
+        if ($request->file('product_img2')) {
+            $img = $request->file('product_img2');
+            $name_gen = hexdec(uniqid()) . '.' . $img->getClientOriginalExtension();
+            Image::make($img)
                 ->resize(900, 900)
-                ->save('upload/product/product_img/' . $name_gen2);
-            $save_url2 = 'upload/product/product_img/' . $name_gen2;
+                ->save('upload/product/product_img/' . $name_gen);
+            $save_url = 'upload/product/product_img/' . $name_gen;
 
             if (file_exists($old_img)) {
                 unlink($old_img);
@@ -144,8 +160,7 @@ class productController extends Controller
                 'sub_id' => $request->sub_id,
                 'site_id' => $request->site_id,
                 'product_name' => $request->product_name,
-                'product_img' => $save_url,
-                'product_img2' => $save_url2,
+                'product_img2' => $save_url,
                 'product_message' => $request->product_message,
                 'created_at' => Carbon::now(),
                 'status' => 1,
@@ -154,9 +169,20 @@ class productController extends Controller
             Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
 
             return redirect()->route('allProduct');
+        } else {
+
+            product::findOrFail($product_id)->update([
+                'category_id' => $request->category_id,
+                'sub_id' => $request->sub_id,
+                'site_id' => $request->site_id,
+                'product_name' => $request->product_name,
+                'product_message' => $request->product_message,
+                'created_at' => Carbon::now(),
+                'status' => 1,
+            ]);
+            return redirect()->route('allProduct');
         }
     }
-
     public function deleteProduct($id)
     {
         product::findOrFail($id)->delete();

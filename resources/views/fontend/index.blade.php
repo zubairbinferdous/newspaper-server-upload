@@ -501,13 +501,13 @@
     </div>
 
     <!-- tech-talk-area  area-two-->
-    {{-- <div class="container m-20">
+    <div class="container m-20">
         <div class="row">
             <div class="title-data">
                 <h6>ভিডিও সেকশন</h6>
             </div>
         </div>
-    </div> --}}
+    </div>
 
     <div class="tech-talk">
         <div class="container p-300">
@@ -515,6 +515,7 @@
 
                 @php
                     $video = App\Models\video::orderBy('id', 'DESC')->get();
+                    $Selfvideo = App\Models\SelfVideo::orderBy('id', 'DESC')->get();
 
                 @endphp
                 @foreach ($video as $item)
@@ -526,6 +527,14 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen></iframe>
 
+                        <a href="" class="linl-mt">{{ $item->title }}</a>
+                    </div>
+                @endforeach
+                @foreach ($Selfvideo as $item)
+                    <div class="col-md-3 tech-data-area text-center">
+                        <video width="300px" height="300px" controls>
+                            <source src="{{ asset($item->file_path) }}" type="video/mp4">
+                        </video>
                         <a href="" class="linl-mt">{{ $item->title }}</a>
                     </div>
                 @endforeach

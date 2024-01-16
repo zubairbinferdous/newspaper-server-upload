@@ -13,8 +13,10 @@ use App\Http\Controllers\categoryController;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\checkOutController;
+use App\Http\Controllers\managerController;
 use App\Http\Controllers\orderController;
 use App\Http\Controllers\videoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +77,8 @@ Route::get('/admin/login', [AdminController::class, 'Adminlogin'])->name('adminL
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
+    // home manager
+    Route::get('/home/manager/', [managerController::class, 'homeLogo'])->name('manager');
 
     // video area add_video
     Route::controller(videoController::class)->group(function () {
@@ -82,9 +86,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store/video', 'storeBrand')->name('video_upload');
         Route::get('/all/video', 'allVideo')->name('all_video');
         Route::get('/delete/video/{id}', 'deleteVideoData')->name('video.delete');
+        Route::get('/delete/video/{id}', 'deleteSelfVideoData')->name('SelfVideo.delete');
     });
 
+    // self video 
     Route::get('/add_upload', [videoController::class, 'showForm'])->name('show.upload.form');
+    Route::get('/allSelfVideo', [videoController::class, 'allSelfVideo'])->name('allSelfVideo');
     Route::post('/store/upload', [videoController::class, 'upload'])->name('upload.video');
 
     // brand
@@ -96,11 +103,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/brand', 'updateBrand')->name('brand.update');
         Route::get('/delete/brand/{id}', 'deleteBrand')->name('brand.delete');
 
-        // password user.store
+        // user and password 
         Route::post('/store/user', 'storeUser')->name('user.store');
         Route::get('/addUser', 'addUser')->name('addUser');
         Route::get('/allUser', 'allUser')->name('allUser');
         Route::get('/delete/user/{id}', 'deleteUser')->name('user.delete');
+        Route::get('/user/data/', 'userData')->name('userData');
+        Route::get('/user/data/{id}', 'userDataInfo')->name('userInfo');
+        Route::Post('/user/data/update', 'updateDataInfo')->name('update.info');
+        Route::Post('/user/password/update', 'updateDataInfoPass')->name('update.pass');
+        Route::get('/user/password/', 'userPassword')->name('user.password');
     });
 
     // category

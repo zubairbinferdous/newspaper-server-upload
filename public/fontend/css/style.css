@@ -1220,3 +1220,49 @@ textarea:focus {
     display: inline-block;
     color: #1d1c1c;
 }
+
+.new-area-two-center-side span {
+    margin-top: 0px;
+    display: block;
+    font-size: 17px;
+    margin-bottom: 60px;
+}
+
+.category {
+    width: 100%;
+    height: 100%;
+    background-color: rgb(203, 36, 11);
+    border-right: 2px solid black;
+    text-align: center;
+    padding: 6px 9px;
+    transition: 0.5s;
+}
+.tips-data a {
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 300ms;
+    padding-top: 22px;
+    text-decoration: none;
+    display: inline-block;
+    color: #1d1c1c;
+}
+
+.tips-data-two a {
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 300ms;
+    padding-top: 22px;
+    text-decoration: none;
+    display: inline-block;
+    color: #1d1c1c;
+}
+
+.computer-data-area a {
+    font-weight: bold;
+    font-size: 16px;
+    transition: all 300ms;
+    padding-top: 22px;
+    text-decoration: none;
+    display: inline-block;
+    color: #1d1c1c;
+}

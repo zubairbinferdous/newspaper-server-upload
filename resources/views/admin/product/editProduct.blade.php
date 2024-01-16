@@ -92,14 +92,18 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-upload-file">Post feature image one</label>
-                                <input type="file" name="product_img" class="form-control" id="basic-default-upload-file"
-                                    required />
+                                <input type="file" name="product_img" class="form-control"
+                                    id="basic-default-upload-file" />
+                                <img src="{{ asset($product->product_img) }}" alt="hello" style="width:100px">
                             </div>
 
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-upload-file">Post feature image two</label>
                                 <input type="file" name="product_img2" class="form-control"
-                                    id="basic-default-upload-file" required />
+                                    id="basic-default-upload-file" />
+                                @if ($product->product_img2)
+                                    <img src="{{ asset($product->product_img2) }}" alt="hello" style="width:100px">
+                                @endif
                             </div>
 
                             {{-- <div class="mb-3">
