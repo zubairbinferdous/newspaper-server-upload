@@ -122,7 +122,7 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="row footer_logo">
-                        <img src=" {{ asset('fontend/images/tech-talk-light.png') }}" alt="">
+                        <!--<img src=" {{ asset('fontend/images/tech-talk-light.png') }}" alt="">-->
                     </div>
                     <div class="row">
                         <div class="col-md-6">
@@ -183,7 +183,7 @@
                 <div class="col-md-4">
                     <div class="footer-email-area">
                         <div class="footer-email">
-                            <h1>ইমেইল এলাট</h1>
+                            <h1>ইমেইল এলার্ট </h1>
                             <p>নতুন সব খবর জানতে আপনার ইমেইল প্রদান করুন</p>
 
                             <div class="email-data">
@@ -197,29 +197,29 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="footer-logo-area2 text-center">
-                    <ul>
-                        <li><a href="">টেকটক</a></li>
-                        <li><a href="">সার্কুলেশন</a></li>
-                        <li><a href="">মন্তব্য নীতিমালা</a></li>
-                        <li><a href="">বাংলাদেশ</a></li>
-                        <li><a href="">আন্তর্জাতিক</a></li>
-                        <li><a href="">টেলিকম ও গ্যাজেটস</a></li>
-                        <li><a href="">বিনোদন ও লাইফ স্টাইল</a></li>
-                        <li><a href="">ব্যান্ডের গল্প</a></li>
-                        <li><a href="">সফটওয়্যার</a></li>
-                        <li><a href="">কম্পিউটার</a></li>
-                        <li><a href="">ভিডিও</a></li>
-                    </ul>
-                </div>
-            </div>
+            <!--<div class="row">-->
+            <!--    <div class="footer-logo-area2 text-center">-->
+            <!--        <ul>-->
+            <!--            <li><a href="">টেকটক</a></li>-->
+            <!--            <li><a href="">সার্কুলেশন</a></li>-->
+            <!--            <li><a href="">মন্তব্য নীতিমালা</a></li>-->
+            <!--            <li><a href="">বাংলাদেশ</a></li>-->
+            <!--            <li><a href="">আন্তর্জাতিক</a></li>-->
+            <!--            <li><a href="">টেলিকম ও গ্যাজেটস</a></li>-->
+            <!--            <li><a href="">বিনোদন ও লাইফ স্টাইল</a></li>-->
+            <!--            <li><a href="">ব্যান্ডের গল্প</a></li>-->
+            <!--            <li><a href="">সফটওয়্যার</a></li>-->
+            <!--            <li><a href="">কম্পিউটার</a></li>-->
+            <!--            <li><a href="">ভিডিও</a></li>-->
+            <!--        </ul>-->
+            <!--    </div>-->
+            <!--</div>-->
         </div>
 
     </footer>
     <div class="footer-end text-center">
-        <h4>সম্পাদক : আনোয়ার হোসেন আনু </h4>
-        <h5>২০২৩ -টেকটক বাংলা, সমস্ত অধিকার সংরক্ষিত </h5>
+        <!--<h4>সম্পাদক : আনোয়ার হোসেন আনু </h4>-->
+        <h5>২০২৪-টেকটক বাংলা, সমস্ত অধিকার সংরক্ষিত </h5>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

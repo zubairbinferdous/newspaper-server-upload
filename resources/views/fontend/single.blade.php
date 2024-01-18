@@ -23,7 +23,7 @@
 
                             <h1> {{ $product->product_name }} </h1>
 
-                            <p>{{ strip_tags($product->product_message) }}</p>
+                            <p>{!! $product->product_message !!}</p>
                         </div>
 
                         <div class="row">

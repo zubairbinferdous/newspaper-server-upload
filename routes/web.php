@@ -143,5 +143,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/all/product/{id}', 'productEdit')->name('edit.product');
         Route::post('/update/product', 'productUpdate')->name('product.update');
         Route::get('/delete/product/{id}', 'deleteProduct')->name('product.delete');
+        Route::get('/view/product/{id}', 'viewProduct')->name('product.view');
     });
 });

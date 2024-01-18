@@ -14,6 +14,7 @@
                                     <th>Post image 1</th>
                                     <th>Site Area</th>
                                     <th>Category</th>
+                                    {{-- <th>Sub Category</th> --}}
                                     <th>Post image 2</th>
                                     <th>Post Test area</th>
                                     <th>Action</th>
@@ -38,6 +39,7 @@
                                         <td>{{ $item->site_id }}</td>
 
                                         <td>{{ $item->catagory->cate_name }}</td>
+                                        {{-- <td>{{ $item->subCategory->Sub_category }}</td> --}}
 
 
                                         <td><img src="{{ asset($item->product_img2) }}" alt=""
@@ -54,10 +56,15 @@
                                                 <div class="dropdown-menu">
                                                     <a class="dropdown-item"
                                                         href="{{ route('edit.product', $item->id) }}"><i
-                                                            class="ti ti-pencil me-1"></i> Edit</a>
+                                                            class="ti ti-pencil me-1"></i>Edit</a>
                                                     <a class="dropdown-item"
                                                         href="{{ route('product.delete', $item->id) }}"><i
-                                                            class="ti ti-trash me-1"></i> Delete</a>
+                                                            class="ti ti-trash me-1"></i>Delete
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('product.view', $item->id) }}"><i
+                                                            class="fa-regular fa-eye me-1"></i>view
+                                                    </a>
                                                 </div>
                                             </div>
                                         </td>

@@ -98,6 +98,13 @@ class productController extends Controller
         $sub = subCategory::latest()->get();
         return view('admin.product.editProduct', compact('product', 'category', 'sub'));
     }
+    public function viewProduct($id)
+    {
+        $category = catagory::latest()->get();
+        $sub = subCategory::latest()->get();
+        $product = product::findOrFail($id);
+        return view('admin.product.allViewProduct', compact('product', 'category', 'sub'));
+    }
     // public function updateCategory(Request $request)
     // {
     //     $cateId = $request->id;
