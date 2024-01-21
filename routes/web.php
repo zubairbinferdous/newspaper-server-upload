@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // single Post 
-Route::get('singlePost/{id}', [homeController::class, 'singlePost']);
+Route::get('r4skd4iltd/{id}', [homeController::class, 'singlePost'])->name('singlePost');
 // category Post 
 Route::get('post/categoryPage/{id}', [homeController::class, 'categoryPage']);
 

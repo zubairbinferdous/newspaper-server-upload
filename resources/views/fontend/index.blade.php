@@ -53,7 +53,9 @@
                                         <img src=" {{ url($item->product_img) }}" alt="" class="image-fluid"
                                             style="height: 349px">
                                         <div class="new-data-area">
-                                            <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
+                                            {{-- <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a> --}}
+                                            <a href=" {{ route('singlePost', $item->id) }} ">
+                                                {{ $item->product_name }}</a>
                                         </div>
                                     </div>
                                 </div>

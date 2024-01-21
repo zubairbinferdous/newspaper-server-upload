@@ -4,7 +4,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tech Talk</title>
+    {{-- @php
+        $main_slider = App\Models\product::where('site_id', 'main_slider')
+            ->orderBy('id', 'DESC')
+            ->get();
+    @endphp
+    <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -12,7 +19,12 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('/fontend/css/style.css') }}">
 
+
 </head>
+{{-- {{-- <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
+{{-- <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
+{{-- <title>Tech Talk</title> --}}
+{{-- <title>{{ $main_slider->product_name }}</title> --}}
 
 <body>
 
@@ -82,8 +94,8 @@
     <menu>
         <div class="container">
             <div class="row ">
-                
-                    {{-- <div class="col-md-2">
+
+                {{-- <div class="col-md-2">
                     <div class="data-cate">
                         <a href="{{ url('product/category/' . $item->id) }}">
                             <img src="{{ asset($item->category_img) }}" alt="" style="width:250px;">
@@ -96,12 +108,12 @@
                         </div>
                     </div>
                 </div> --}}
-                                    <div class="col-md-1 p0">
-                        <div class="category">
-                            <a href="{{ route('homePage') }}">হোম</a>
-                          
-                        </div>
+                <div class="col-md-1 p0">
+                    <div class="category">
+                        <a href="{{ route('homePage') }}">হোম</a>
+
                     </div>
+                </div>
                 @foreach ($catagory as $item)
                     <div class="col-md-1 p0">
                         <div class="category">
