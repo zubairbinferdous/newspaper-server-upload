@@ -16,8 +16,8 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-upload-file">Add Header Logo </label>
-                                <input type="file" name="header_img" class="form-control"
-                                    id="basic-default-upload-file" />
+                                <input type="file" name="header_img" class="form-control" id="basic-default-upload-file"
+                                    required />
                             </div>
 
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="toast" aria-label="Close">Add
@@ -39,8 +39,8 @@
 
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-upload-file">Add Footer Logo </label>
-                                <input type="file" name="footer_img" class="form-control"
-                                    id="basic-default-upload-file" />
+                                <input type="file" name="footer_img" class="form-control" id="basic-default-upload-file"
+                                    required />
                             </div>
 
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="toast" aria-label="Close">Add
@@ -80,7 +80,9 @@
                                             <div class="dropdown-menu">
                                                 {{-- <a class="dropdown-item" href="{{ route('edit.brand', $item->id) }}"><i
                                                         class="ti ti-pencil me-1"></i> Edit</a> --}}
-                                                <a class="dropdown-item" href=""><i class="ti ti-trash me-1"></i>
+                                                <a class="dropdown-item"
+                                                    href="{{ route('delete.logo.home', $item->id) }}"><i
+                                                        class="ti ti-trash me-1"></i>
                                                     Delete</a>
                                             </div>
                                         </div>
@@ -121,7 +123,8 @@
                                             <div class="dropdown-menu">
                                                 {{-- <a class="dropdown-item" href="{{ route('edit.brand', $item->id) }}"><i
                                                         class="ti ti-pencil me-1"></i> Edit</a> --}}
-                                                <a class="dropdown-item" href=""><i class="ti ti-trash me-1"></i>
+                                                <a class="dropdown-item" href="{{ route('delete.logo', $item->id) }}"><i
+                                                        class="ti ti-trash me-1"></i>
                                                     Delete</a>
                                             </div>
                                         </div>

@@ -347,6 +347,10 @@ menu {
     margin-bottom: 10px;
 }
 
+.news-ticker:hover ul {
+    animation-play-state: paused !important;
+}
+
 /* add-area  */
 
 .add-area {
@@ -899,7 +903,6 @@ footer {
     color: #ffffff;
     font-size: 20px;
     padding-right: 10px;
-    padding-bottom: 63px;
 }
 .footer-logo-area ul li a {
     color: #ffffff;
@@ -1265,4 +1268,24 @@ textarea:focus {
     text-decoration: none;
     display: inline-block;
     color: #1d1c1c;
+}
+.new-area-two-left-side a {
+    font-size: 16px;
+}
+.new-area-two-left-side {
+    margin-bottom: 50px;
+}
+
+.footer-logo-area {
+    margin-top: 0px;
+}
+.footer-logo-area p {
+    color: white;
+}
+
+.running-news-title h6 {
+    font-size: 14px;
+    color: #fff;
+    padding: 17px 27px 10px 0px;
+    margin-bottom: 0px;
 }

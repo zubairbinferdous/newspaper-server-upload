@@ -41,7 +41,7 @@
 
                         <div class="row mt-05 ">
 
-                            @foreach ($productWise as $item)
+                            @foreach ($posts as $item)
                                 @php
                                     $longText = strip_tags($item->product_message);
                                     $Text = strip_tags($item->product_message);

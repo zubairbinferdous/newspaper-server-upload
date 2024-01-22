@@ -190,6 +190,14 @@ class productController extends Controller
             return redirect()->route('allProduct');
         }
     }
+    public function trashProduct($id)
+    {
+        product::findOrFail($id)->update([
+            'site_id' => 'trash',
+        ]);
+        Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
+        return redirect()->route('allProduct');
+    }
     public function deleteProduct($id)
     {
         product::findOrFail($id)->delete();

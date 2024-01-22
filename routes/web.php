@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
 });
 
 // single Post 
-Route::get('r4skd4iltd/{id}', [homeController::class, 'singlePost'])->name('singlePost');
+Route::get('singlePost/{id}', [homeController::class, 'singlePost'])->name('singlePost');
 // category Post 
 Route::get('post/categoryPage/{id}', [homeController::class, 'categoryPage']);
 
@@ -81,7 +81,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/home/manager/', [managerController::class, 'homeLogo'])->name('manager');
     Route::POST('/add/header/logo/', [managerController::class, 'header'])->name('header.store');
     Route::POST('/add/footer/logo/', [managerController::class, 'footer'])->name('footer.store');
-
+    Route::get('/delete/logo/{id}', [managerController::class, 'deleteLogo'])->name('delete.logo');
+    Route::get('/delete/logo/home/{id}', [managerController::class, 'deleteLogoHome'])->name('delete.logo.home');
     // video area add_video
     Route::controller(videoController::class)->group(function () {
         Route::get('/add_video', 'addVideo')->name('add_video');
@@ -142,7 +143,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/store/product', 'storeProduct')->name('product.store');
         Route::get('/all/product/{id}', 'productEdit')->name('edit.product');
         Route::post('/update/product', 'productUpdate')->name('product.update');
-        Route::get('/delete/product/{id}', 'deleteProduct')->name('product.delete');
+        Route::get('/trash/product/{id}', 'trashProduct')->name('product.trash');
         Route::get('/view/product/{id}', 'viewProduct')->name('product.view');
+        Route::get('/delete/product/{id}', 'deleteProduct')->name('product.delete');
     });
+
+    Route::get('/search', [homeController::class, 'searchData'])->name('search');
 });

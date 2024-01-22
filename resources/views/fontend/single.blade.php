@@ -1,4 +1,14 @@
 @extends('fontend.master')
+
+@section('title')
+    <title> {{ $product->product_name }}</title>
+@endsection
+
+@section('title_img')
+    <meta property="og:image" content=" {{ asset($product->product_img) }}">
+@endsection
+
+
 @section('master')
     <div class="single-news-area">
         <div class="container">

@@ -2,7 +2,7 @@
 @section('admin')
     <div class="content-wrapper">
         <div class="row">
-            <div class="col-xl" style="margin: 3% 20%">
+            <div class="col-xl" style="margin: 3% 10%">
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <small class="text-muted float-end">Add New Post</small>
@@ -105,13 +105,15 @@
                                     id="basic-default-upload-file" />
                             </div>
 
-                            <div class="row mb-3">
-                                <div class="col-sm-10">
+                            <div class="row">
+                                <div class="mb-3">
+
                                     <label class="col-sm-2 col-form-label" for="basic-default-message">Post text
                                         area</label>
                                     <textarea name="product_message" id="summernote" placeholder="">
-                                    </textarea>
+                                        </textarea>
                                 </div>
+
                             </div>
 
 
@@ -127,7 +129,7 @@
 
         <script>
             $('#summernote').summernote({
-                placeholder: 'Hello',
+                placeholder: '',
                 tabsize: 2,
                 height: 320,
                 toolbar: [

@@ -58,12 +58,17 @@
                                                         href="{{ route('edit.product', $item->id) }}"><i
                                                             class="ti ti-pencil me-1"></i>Edit</a>
                                                     <a class="dropdown-item"
-                                                        href="{{ route('product.delete', $item->id) }}"><i
-                                                            class="ti ti-trash me-1"></i>Delete
+                                                        href="{{ route('product.trash', $item->id) }}"><i
+                                                            class=" ti ti-trash me-1"></i>trash
                                                     </a>
+
                                                     <a class="dropdown-item"
                                                         href="{{ route('product.view', $item->id) }}"><i
-                                                            class="fa-regular fa-eye me-1"></i>view
+                                                            class="ti ti-eye me-1"></i>preview
+                                                    </a>
+                                                    <a class="dropdown-item"
+                                                        href="{{ route('product.delete', $item->id) }}"><i
+                                                            class="ti ti-trash me-1"></i>delete
                                                     </a>
                                                 </div>
                                             </div>

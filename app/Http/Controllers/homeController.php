@@ -49,4 +49,12 @@ class homeController extends Controller
         $productWise = product::where('status', 1)->where('category_id', $id)->get();
         return view('fontend.category', compact('productWise'));
     }
+
+    public function searchData(Request $request)
+    {
+        $search = $request->search;
+        $posts = Product::where('product_name', 'like', "%$search%")->get();
+
+        return view('fontend.search', compact('posts', 'search'));
+    }
 }

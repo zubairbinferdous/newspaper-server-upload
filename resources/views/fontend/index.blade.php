@@ -53,9 +53,7 @@
                                         <img src=" {{ url($item->product_img) }}" alt="" class="image-fluid"
                                             style="height: 349px">
                                         <div class="new-data-area">
-                                            {{-- <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a> --}}
-                                            <a href=" {{ route('singlePost', $item->id) }} ">
-                                                {{ $item->product_name }}</a>
+                                            <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
                                         </div>
                                     </div>
                                 </div>
@@ -179,9 +177,7 @@
                     <div class="row">
                         <div class="border-top mbbb-5">
                             <div class="today-news">
-                                <a href="#">
-                                    <p>সর্বাধিক পঠিত</p>
-                                </a>
+                                <p>সর্বাধিক পঠিত</p>
                             </div>
                         </div>
                     </div>

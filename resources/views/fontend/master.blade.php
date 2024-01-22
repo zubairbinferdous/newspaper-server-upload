@@ -4,14 +4,9 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{-- @php
-        $main_slider = App\Models\product::where('site_id', 'main_slider')
-            ->orderBy('id', 'DESC')
-            ->get();
-    @endphp
-    <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
-
-
+    @yield('title')
+    @yield('title_img')
+    <meta property="og:description" content=" @yield('title_dis') ">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -24,7 +19,7 @@
 {{-- {{-- <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
 {{-- <meta property="og:image" content="{{ url($main_slider->product_img) }}"> --}}
 {{-- <title>Tech Talk</title> --}}
-{{-- <title>{{ $main_slider->product_name }}</title> --}}
+
 
 <body>
 
@@ -50,9 +45,18 @@
 
                 <div class="col-md-6">
                     <div class="logo-area logo_broder">
-                        <a href="{{ route('homePage') }}">
-                            <img src="{{ asset('fontend/images/techtalk.png') }}" alt="Techtalk BD">
-                        </a>
+                        @php
+                            $footerLogo = App\Models\control::orderBy('id', 'DESC')
+                                ->limit(1)
+                                ->get();
+                        @endphp
+                        @foreach ($footerLogo as $item)
+                            <a href="{{ route('homePage') }}">
+                                <img src="{{ asset($item->header_photo) }}" alt="Techtalk BD" class="img-fluid"
+                                    style="height: 200px">
+                            </a>
+                        @endforeach
+
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -94,20 +98,6 @@
     <menu>
         <div class="container">
             <div class="row ">
-
-                {{-- <div class="col-md-2">
-                    <div class="data-cate">
-                        <a href="{{ url('product/category/' . $item->id) }}">
-                            <img src="{{ asset($item->category_img) }}" alt="" style="width:250px;">
-                        </a>
-                        <div class="itam">
-                            <h3>
-                                 
-                                <a href="{{ url('product/category/' . $item->id) }}">{{ $item->cate_name }}</a>
-                            </h3>
-                        </div>
-                    </div>
-                </div> --}}
                 <div class="col-md-1 p0">
                     <div class="category">
                         <a href="{{ route('homePage') }}">হোম</a>
@@ -123,6 +113,12 @@
                 @endforeach
 
             </div>
+            <form class="d-flex" role="search" action="{{ route('search') }}" method="GET">
+                @csrf
+                <input class="form-control me-1" type="search" placeholder="সার্চ" name="search" aria-label="Search"
+                    value="{{ isset($search) ? $search : '' }}" required>
+                <button class="btn btn-outline-success" type="submit">সার্চ</button>
+            </form>
         </div>
     </menu>
     <!-- running-news  -->
@@ -132,32 +128,33 @@
     <footer class="m-20">
         <div class="container">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="row footer_logo">
-                        <!--<img src=" {{ asset('fontend/images/tech-talk-light.png') }}" alt="">-->
+                        @php
+                            $footerLogo = App\Models\footer::orderBy('id', 'DESC')
+                                ->limit(1)
+                                ->get();
+                        @endphp
+                        @foreach ($footerLogo as $item)
+                            <img src=" {{ asset($item->footer_photo) }}" alt="" height="200px">
+                        @endforeach
                     </div>
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="footer-menu-area">
+                        <div class="footer-logo-area">
+                            <div class="footer-logo-area text-center">
                                 <ul>
-                                    <li><a href="">আমাদের সম্পর্কে</a></li>
-                                    <li><a href="">শর্তাবলী</a></li>
-                                    <li><a href="">গোপনীয়তা নীতি</a></li>
+                                    <li>অনুসরণ করুন :</li>
+                                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                                    <li><a href=""><i class="fa-brands fa-square-instagram"></i></a></li>
+                                    <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                                    <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
                                 </ul>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="footer-menu-area">
-                                <ul>
-                                    <li><a href="">কনভার্টার</a></li>
-                                    <li><a href="">বিজ্ঞাপন</a></li>
-                                    <li><a href="">ফিচারস</a></li>
-                                </ul>
+                                <p>ইমেইল : techtalk@gmail.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                {{-- <div class="col-md-4">
                     <div class="row">
                         <div class="footer-logo-area">
                             <div class="footer-logo-area text-center">
@@ -191,8 +188,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
+                </div> --}}
+                <div class="col-md-6">
                     <div class="footer-email-area">
                         <div class="footer-email">
                             <h1>ইমেইল এলার্ট </h1>
@@ -401,7 +398,7 @@
     </script> --}}
     <script>
         $('#summernote').summernote({
-            placeholder: 'Hello Bootstrap 4',
+            placeholder: '',
             tabsize: 2,
             height: 100
         });

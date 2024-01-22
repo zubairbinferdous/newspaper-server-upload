@@ -17,8 +17,8 @@ class managerController extends Controller
 {
     public function homeLogo()
     {
-        $home = control::latest()->get();
-        $footer = footer::latest()->get();
+        $home = control::latest()->limit(1)->orderBy('id', 'DESC')->get();
+        $footer = footer::latest()->limit(1)->orderBy('id', 'DESC')->get();
         return view('admin.home.homeManager', compact('home', 'footer'));
     }
 
@@ -55,5 +55,16 @@ class managerController extends Controller
         } else {
             return 'error';
         }
+    }
+
+    public function deleteLogoHome($id)
+    {
+        control::findOrFail($id)->delete();
+        return redirect()->back();
+    }
+    public function deleteLogo($id)
+    {
+        footer::findOrFail($id)->delete();
+        return redirect()->back();
     }
 }
