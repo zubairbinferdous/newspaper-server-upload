@@ -10,6 +10,8 @@
                     <div class="card-body">
                         <form method="POST" action="{{ route('cate.store') }}" enctype="multipart/form-data">
                             @csrf
+                            <input type="hidden" name="menu" value="dactive">
+                            <input type="hidden" name="section" value="dactive">
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-fullname">Category Name</label>
                                 <input type="text" name="cate_name" class="form-control" id="basic-default-fullname"

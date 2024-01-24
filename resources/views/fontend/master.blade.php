@@ -64,7 +64,9 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="date_area text-center">
-                                    <p id="date_area_bangla">বুধবার ০৩ জানুয়ারি ২০২৪, - ১৮ পৌষ ১৪৩০</p>
+                                    <i class="fa-regular fa-calendar-days"><span id="date_area_bangla"></span></i>
+                                    {{-- <p>বুধবার ০৩
+                                        জানুয়ারি ২০২৪, - ১৮ পৌষ ১৪৩০</p> --}}
                                 </div>
                             </div>
                         </div>
@@ -79,6 +81,18 @@
                                         <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
                                         <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
                                     </ul>
+                                    <i class="fa-solid fa-magnifying-glass search_icon2" class=""
+                                        id="search_data"></i>
+                                    <div id="search_content" class="remove">
+                                        <form class="d-flex" class="" role="search"
+                                            action="{{ route('search') }}" method="GET">
+                                            @csrf
+                                            <i class="fa-solid fa-magnifying-glass search_icon" class=""></i>
+                                            <input class="search_ber" type="search" placeholder="সার্চ" name="search"
+                                                aria-label="Search" value="{{ isset($search) ? $search : '' }}">
+                                            <button class="search_btn" type="submit">সার্চ</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +105,8 @@
     <!-- menu-area  -->
 
     @php
-        $catagory = App\Models\catagory::orderBy('id', 'ASC')
+        $catagory = App\Models\catagory::where('menu_active', 'active')
+            ->orderBy('id', 'ASC')
             ->limit(11)
             ->get();
     @endphp
@@ -113,12 +128,7 @@
                 @endforeach
 
             </div>
-            <form class="d-flex" role="search" action="{{ route('search') }}" method="GET">
-                @csrf
-                <input class="form-control me-1" type="search" placeholder="সার্চ" name="search" aria-label="Search"
-                    value="{{ isset($search) ? $search : '' }}" required>
-                <button class="btn btn-outline-success" type="submit">সার্চ</button>
-            </form>
+
         </div>
     </menu>
     <!-- running-news  -->
@@ -128,7 +138,8 @@
     <footer class="m-20">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-1"></div>
+                <div class=" col-md-5">
                     <div class="row footer_logo">
                         @php
                             $footerLogo = App\Models\footer::orderBy('id', 'DESC')
@@ -136,7 +147,7 @@
                                 ->get();
                         @endphp
                         @foreach ($footerLogo as $item)
-                            <img src=" {{ asset($item->footer_photo) }}" alt="" height="200px">
+                            <img src=" {{ asset($item->footer_photo) }}" alt="" height="150px">
                         @endforeach
                     </div>
                     <div class="row">
@@ -189,7 +200,7 @@
                         </div>
                     </div>
                 </div> --}}
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="footer-email-area">
                         <div class="footer-email">
                             <h1>ইমেইল এলার্ট </h1>
@@ -204,6 +215,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-1"></div>
             </div>
 
             <!--<div class="row">-->
@@ -316,92 +328,34 @@
 
         function getCurrentDateTimeInBangla() {
             const now = new Date();
-            const year = convertToBanglaDigits(now.getFullYear().toString());
-            const month = getBanglaMonthName(now.getMonth());
-            const day = convertToBanglaDigits(now.getDate().toString().padStart(2, '0'));
-            const hours = convertToBanglaDigits(now.getHours().toString().padStart(2, '0'));
-            const minutes = convertToBanglaDigits(now.getMinutes().toString().padStart(2, '0'));
-            const seconds = convertToBanglaDigits(now.getSeconds().toString().padStart(2, '0'));
-            const banglaDay = getBanglaDayName(now.getDay());
-            const banglaDateTime = `${banglaDay} ${day} ${month} ${year} সাল`;
-            const data_add = document.getElementById("date_area_bangla").innerText = banglaDateTime;
-        }
-        getCurrentDateTimeInBangla()
-    </script>
-    {{-- <script>
-        function convertToBanglaDigits(input) {
-            const digitsMap = {
-                '0': '০',
-                '1': '১',
-                '2': '২',
-                '3': '৩',
-                '4': '৪',
-                '5': '৫',
-                '6': '৬',
-                '7': '৭',
-                '8': '৮',
-                '9': '৯'
-            };
-
-            return input.replace(/[0-9]/g, (match) => digitsMap[match]);
-        }
-
-        function getBanglaMonthName(monthIndex) {
-            const monthsInBangla = [
-                'জানুয়ারি',
-                'ফেব্রুয়ারি',
-                'মার্চ',
-                'এপ্রিল',
-                'মে',
-                'জুন',
-                'জুলাই',
-                'আগস্ট',
-                'সেপ্টেম্বর',
-                'অক্টোবর',
-                'নভেম্বর',
-                'ডিসেম্বর'
-            ];
-
-            return monthsInBangla[monthIndex];
-        }
-
-        function getBanglaDayName(dayIndex) {
-            const daysInBangla = [
-                'শনিবার',
-                'রবিবার',
-                'সোমবার',
-                'মঙ্গলবার',
-                'বুধবার',
-                'বৃহস্পতিবার',
-                'শুক্রবার'
-            ];
-
-            return daysInBangla[dayIndex];
-        }
-
-        function getCurrentDateTimeInBangla() {
             const options = {
                 timeZone: 'Asia/Dhaka',
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric',
+                weekday: 'long'
             };
 
-            const now = new Date();
-            const banglaDateTime = now.toLocaleString('en-US', options).replace(/[0-9]/g, (match) => convertToBanglaDigits(
-                match));
+            const banglaDateTime = new Intl.DateTimeFormat('bn-BD', options).format(now);
             const data_add = document.getElementById("date_area_bangla").innerText = banglaDateTime;
         }
 
-        // Call the function to get and display the current date and time in Bangla
         getCurrentDateTimeInBangla();
-    </script> --}}
+    </script>
+
     <script>
         $('#summernote').summernote({
             placeholder: '',
             tabsize: 2,
             height: 100
         });
+    </script>
+
+    <script>
+        const element = document.getElementById('search_content');
+        const data = document.getElementById('search_data').addEventListener('click', function() {
+            element.classList.add("add");
+        })
     </script>
 </body>
 

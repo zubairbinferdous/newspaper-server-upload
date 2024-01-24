@@ -54,7 +54,6 @@ class homeController extends Controller
     {
         $search = $request->search;
         $posts = Product::where('product_name', 'like', "%$search%")->get();
-
         return view('fontend.search', compact('posts', 'search'));
     }
 }

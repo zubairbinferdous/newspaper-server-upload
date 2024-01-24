@@ -14,16 +14,18 @@
                     <div class="news-ticker-container">
                         <div class="news-ticker">
                             <ul>
-                                <li><img src="{{ asset('fontend/images/ticke.jpeg') }}" alt="">২০২৩ সালে ইনফিনিক্সের
-                                    সেরা যে ৩ ফোন
-                                </li>
-                                <li><img src="{{ asset('fontend/images/ticke.jpeg') }}" alt="">হ্যান্ডসেটের বৈধতা
-                                    যাচাই করতে যা করবেন
-                                </li>
-                                <li><img src="{{ asset('fontend/images/ticke.jpeg') }}" alt="">ডেটা রোমিং চার্জ :
-                                    বিদেশ ভ্রমণে যেভাবে খরচ
-                                    সামাল দেবেন </li>
-                                <!-- Add more news items as needed -->
+                                @php
+                                    $main_slider = App\Models\product::where('site_id', 'Running_news')
+                                        ->orderBy('id', 'DESC')
+                                        ->get();
+                                @endphp
+
+                                @foreach ($main_slider as $item)
+                                    <li>
+                                        <img src="{{ asset('fontend/images/ticke.jpeg') }}" alt="">
+                                        <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -38,29 +40,32 @@
                 <div class="col-md-6 p0">
 
                     <div id="carouselExample" class="carousel slide">
+
+
+                        @php
+                            $main_slider = App\Models\product::where('site_id', 'main_slider')
+                                ->orderBy('id', 'DESC')
+                                ->limit(3)
+                                ->get();
+                        @endphp
                         <div class="carousel-inner">
-
-                            @php
-                                $main_slider = App\Models\product::where('site_id', 'main_slider')
-                                    ->orderBy('id', 'DESC')
-                                    ->limit(3)
-                                    ->get();
-                            @endphp
-
                             @foreach ($main_slider as $item)
                                 <div class="carousel-item active">
                                     <div class="new-data-one">
                                         <img src=" {{ url($item->product_img) }}" alt="" class="image-fluid"
                                             style="height: 349px">
                                         <div class="new-data-area">
-                                            <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
+                                            {{-- <a href=" {{ url('singlePost/' . $item->product_name . $item->id) }} ">
+                                                {{ $item->product_name }}</a> --}}
+                                            <a href=" {{ url('singlePost/' . $item->id) }} ">
+                                                {{ $item->product_name }}</a>
                                         </div>
                                     </div>
                                 </div>
                             @endforeach
-
-
                         </div>
+
+
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                             data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -547,7 +552,7 @@
             <div class="row">
 
                 <div class="col-md-9 ">
-                    <div class="title-data">
+                    {{-- <div class="title-data">
                         <h6>জনপ্রিয় ব্র্যান্ড</h6>
                     </div>
                     <div class="row">
@@ -589,7 +594,7 @@
                             </div>
                             <h4>Intel</h4>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="row">
                         <div class="title-data">
                             <h6>ব্রান্ডের গল্প</h6>

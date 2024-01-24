@@ -6,11 +6,15 @@
                 <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <small class="text-muted float-end">Add New Post</small>
-
+                        <p>hell1{{ $user->name }}</p>
+                        <p>hell2{{ Auth::user()->name }}</p>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                             @csrf
+
+                            <input type="hidden" name="post" value="{{ $user->name }}">
+                            <input type="hidden" name="date" id="myData">
                             <div class="mb-3">
                                 <label class="form-label" for="basic-default-fullname">Post title</label>
                                 <input type="text" name="product_name" class="form-control" id="basic-default-fullname"
@@ -53,9 +57,9 @@
                                     <option value='{{ '0' }}'> Null </option>
                                     <option value='{{ 'main_slider' }}'> Main slider </option>
                                     <option value='{{ 'main_area_with_out_slider' }}'> Main area with out slider </option>
-                                    <option value='{{ 'today_news' }}'> Today_news </option>
+                                    <option value='{{ 'today_news' }}'> সর্বশেষ সংবাদ </option>
                                     <option value='{{ 'today_News_main' }}'> Today News main </option>
-                                    <option value='{{ 'today_happen ' }}'> Today happen </option>
+                                    <option value='{{ 'today_happen ' }}'> সর্বাধিক পঠিত </option>
                                     <option value='{{ 'tech_area ' }}'> Tech area</option>
                                     <option value='{{ 'bangladesh_right_side ' }}'> Bangladesh right side</option>
                                     <option value='{{ 'bangladesh_right_single_data ' }}'> Bangladesh right single data
@@ -77,10 +81,11 @@
 
                                     <option value="game">Game</option>
 
-                                    <option value="related_news">Related news</option>
+                                    <option value="Running_news">Running news</option>
+                                    <option value="Related_news">Related news</option>
 
-                                    <option value="sideBar_one">SideBar one</option>
-                                    <option value="sideBar_two">SideBar two</option>
+                                    <option value="sideBar">SideBar</option>
+                                    {{-- <option value="sideBar_two">SideBar two</option> --}}
                                 </select>
                             </div>
 

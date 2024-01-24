@@ -134,6 +134,25 @@
                         <li class="menu-item">
                             <a href="" class="menu-link menu-toggle">
                                 <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
+                                <div data-i18n=" Post Area">Post Area</div>
+                            </a>
+                            <ul class="menu-sub">
+                                <li class="menu-item">
+                                    <a href="{{ route('addProduct') }}" class="menu-link">
+                                        <div data-i18n="Add Post">Add Post</div>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="{{ route('allProduct') }}" class="menu-link">
+                                        <div data-i18n="All Post">All Post</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="" class="menu-link menu-toggle">
+                                <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
                                 <div data-i18n="Category Area">Category Area</div>
                             </a>
                             <ul class="menu-sub">
@@ -187,24 +206,7 @@
                             </ul>
                         </li>
 
-                        <li class="menu-item">
-                            <a href="" class="menu-link menu-toggle">
-                                <i class="menu-icon tf-icons ti ti-layout-sidebar"></i>
-                                <div data-i18n=" Post Area">Post Area</div>
-                            </a>
-                            <ul class="menu-sub">
-                                <li class="menu-item">
-                                    <a href="{{ route('addProduct') }}" class="menu-link">
-                                        <div data-i18n="Add Post">Add Post</div>
-                                    </a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="{{ route('allProduct') }}" class="menu-link">
-                                        <div data-i18n="All Post">All Post</div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+
 
                         <li class="menu-item">
                             <a href="" class="menu-link menu-toggle">
@@ -612,6 +614,75 @@
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
     <script src=" {{ asset('adminbackend/assets/js/forms-editors.js') }}"></script>
     {!! Toastr::message() !!}
+
+    <script>
+        function convertToBanglaDigits(input) {
+            const digitsMap = {
+                '0': '০',
+                '1': '১',
+                '2': '২',
+                '3': '৩',
+                '4': '৪',
+                '5': '৫',
+                '6': '৬',
+                '7': '৭',
+                '8': '৮',
+                '9': '৯'
+            };
+
+            return input.replace(/[0-9]/g, (match) => digitsMap[match]);
+        }
+
+        function getBanglaMonthName(monthIndex) {
+            const monthsInBangla = [
+                'জানুয়ারি',
+                'ফেব্রুয়ারি',
+                'মার্চ',
+                'এপ্রিল',
+                'মে',
+                'জুন',
+                'জুলাই',
+                'আগস্ট',
+                'সেপ্টেম্বর',
+                'অক্টোবর',
+                'নভেম্বর',
+                'ডিসেম্বর'
+            ];
+
+            return monthsInBangla[monthIndex];
+        }
+
+        function getBanglaDayName(dayIndex) {
+            const daysInBangla = [
+                'শনিবার',
+                'রবিবার',
+                'সোমবার',
+                'মঙ্গলবার',
+                'বুধবার',
+                'বৃহস্পতিবার',
+                'শুক্রবার'
+            ];
+
+            return daysInBangla[dayIndex];
+        }
+
+        function getCurrentDateTimeInBangla() {
+            const now = new Date();
+            const options = {
+                timeZone: 'Asia/Dhaka',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                weekday: 'long'
+            };
+
+            const banglaDateTime = new Intl.DateTimeFormat('bn-BD', options).format(now);
+            const data_add = document.getElementById("myData");
+            data_add.value = banglaDateTime;
+        }
+
+        getCurrentDateTimeInBangla();
+    </script>
 
 
 

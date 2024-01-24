@@ -7,9 +7,13 @@ use App\Models\Brand;
 use App\Models\catagory;
 use App\Models\product;
 use App\Models\subCategory;
+use App\Models\User;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Image;
 use Toastr;
+
+
 
 
 class productController extends Controller
@@ -22,9 +26,11 @@ class productController extends Controller
     }
     public function addProduct()
     {
+        $user_id = Auth::user()->id;
+        $user = User::findOrFail($user_id);
         $sub = subCategory::latest()->get();
         $category = catagory::latest()->get();
-        return view('admin.product.add_product', compact('category', 'sub'));
+        return view('admin.product.add_product', compact('category', 'sub', 'user'));
     }
 
     public function storeProduct(Request $request)
@@ -54,6 +60,9 @@ class productController extends Controller
                 'product_img' => $save_url,
                 'product_img2' => $save_url2,
                 'product_message' => $request->product_message,
+                'date_data' => $request->date,
+                'post_by' => $request->post,
+
                 'created_at' => Carbon::now(),
                 'status' => 1,
 
@@ -81,6 +90,9 @@ class productController extends Controller
                 'product_name' => $request->product_name,
                 'product_img' => $save_url,
                 'product_message' => $request->product_message,
+                'date_data' => $request->date,
+                'post_by' => $request->post,
+
                 'created_at' => Carbon::now(),
                 'status' => 1,
 
@@ -142,6 +154,9 @@ class productController extends Controller
                 'product_name' => $request->product_name,
                 'product_img' => $save_url,
                 'product_message' => $request->product_message,
+                'date_data' => $request->date,
+                'post_by' => $request->post,
+
                 'created_at' => Carbon::now(),
                 'status' => 1,
             ]);
@@ -169,6 +184,9 @@ class productController extends Controller
                 'product_name' => $request->product_name,
                 'product_img2' => $save_url,
                 'product_message' => $request->product_message,
+                'date_data' => $request->date,
+                'post_by' => $request->post,
+
                 'created_at' => Carbon::now(),
                 'status' => 1,
             ]);
@@ -184,6 +202,9 @@ class productController extends Controller
                 'site_id' => $request->site_id,
                 'product_name' => $request->product_name,
                 'product_message' => $request->product_message,
+                'date_data' => $request->date,
+                'post_by' => $request->post,
+
                 'created_at' => Carbon::now(),
                 'status' => 1,
             ]);

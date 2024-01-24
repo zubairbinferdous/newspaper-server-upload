@@ -51,11 +51,17 @@ Route::middleware('auth')->group(function () {
 });
 
 // single Post 
+// Route::get('singlePost/{product_name}/{id}', [homeController::class, 'singlePost'])->name('singlePost');
 Route::get('singlePost/{id}', [homeController::class, 'singlePost'])->name('singlePost');
 // category Post 
 Route::get('post/categoryPage/{id}', [homeController::class, 'categoryPage']);
 
+//search 
+Route::get('/search', [homeController::class, 'searchData'])->name('search');
 
+//menu 
+
+//section 
 
 
 
@@ -128,6 +134,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/delete/cate/{id}', 'deleteCate')->name('cate.delete');
     });
 
+    Route::post('/menu', [categoryController::class, 'menu'])->name('menu');
+
 
     // category
     Route::controller(categoryController::class)->group(function () {
@@ -138,15 +146,13 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     // product
     Route::controller(productController::class)->group(function () {
-        Route::get('/add/product', 'addProduct')->name('addProduct');
-        Route::get('/all/product', 'allProduct')->name('allProduct');
-        Route::post('/store/product', 'storeProduct')->name('product.store');
-        Route::get('/all/product/{id}', 'productEdit')->name('edit.product');
-        Route::post('/update/product', 'productUpdate')->name('product.update');
-        Route::get('/trash/product/{id}', 'trashProduct')->name('product.trash');
-        Route::get('/view/product/{id}', 'viewProduct')->name('product.view');
-        Route::get('/delete/product/{id}', 'deleteProduct')->name('product.delete');
+        Route::get('/add/post', 'addProduct')->name('addProduct');
+        Route::get('/all/post', 'allProduct')->name('allProduct');
+        Route::post('/store/post', 'storeProduct')->name('product.store');
+        Route::get('/all/post/{id}', 'productEdit')->name('edit.product');
+        Route::post('/update/post', 'productUpdate')->name('product.update');
+        Route::get('/trash/post/{id}', 'trashProduct')->name('product.trash');
+        Route::get('/view/post/{id}', 'viewProduct')->name('product.view');
+        Route::get('/delete/post/{id}', 'deleteProduct')->name('product.delete');
     });
-
-    Route::get('/search', [homeController::class, 'searchData'])->name('search');
 });

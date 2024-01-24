@@ -21,6 +21,19 @@
                             <h6>{{ $product->catagory->cate_name }}</h6>
                         </div>
 
+                        <div class="profile">
+                            @if ($product->post_by)
+                                <h2> <i class="fa-solid fa-pen-nib"></i> {{ $product->post_by }}</h2>
+                            @else
+                                <h2> <i class="fa-solid fa-pen-nib"></i> অনলাইন ডেস্ক</h2>
+                            @endif
+                            @if ($product->date_data)
+                                <h3><i class="fa-solid fa-calendar-xmark"></i> প্রকাশ : {{ $product->date_data }}</h3>
+                            @else
+                                <h3><i class="fa-solid fa-calendar-xmark"></i> প্রকাশ : বুধবার, ২৪ জানুয়ারী, ২০২৪</h3>
+                            @endif
+                        </div>
+
                         <div class="row">
                             <div class="blog-img">
                                 <img src="{{ asset($product->product_img) }}" alt="" class="img-fluid"
@@ -46,11 +59,11 @@
                         </div>
 
                         <!-- category-area  -->
-                        <div class="category-area-blog">
+                        {{-- <div class="category-area-blog">
                             <a href="">মোবাইল ফোন</a>
                             <a href="">এন্ড্রোইড</a>
                             <a href="">ফোন</a>
-                        </div>
+                        </div> --}}
 
                         <div class="blog-border-bottom"></div>
                         <!-- shera-area  -->
@@ -58,11 +71,12 @@
                             <div class="blog-shear-area">
                                 <ul>
                                     <li>শেয়ার করুন : </li>
-                                    <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
-                                    <li><a href=""><i class="fa-brands fa-square-instagram"></i></a></li>
-                                    <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
-                                    <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
-                                    <li><a href=""><i class="fa-brands fa-youtube"></i></a></li>
+                                    <li>
+                                        <a
+                                            href="https://www.facebook.com/sharer/sharer.php?u={{ route('singlePost', $product->id) }}&display=popup"><i
+                                                class="fa-brands fa-facebook"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -202,39 +216,22 @@
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="row">
-                        <div class="computer_title text-center mt-30">
-                            <a href="">অতি সম্প্রতি </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা,</a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা,</a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা,</a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা,</a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
-                        </div>
-                        <div class="computer-data-two">
-                            <a href="">ইন্টারনেটের দাম বেশি রাখছে মোবাইল অপারেটররা, </a>
+                    <div class="row side_bar">
+                        <div class="">
+                            <div class="computer_title text-center mt-30">
+                                <a href="">অতি সম্প্রতি </a>
+                            </div>
+                            @php
+                                $main_slider = App\Models\product::where('site_id', 'sideBar')
+                                    ->orderBy('id', 'DESC')
+                                    ->get();
+                            @endphp
+
+                            @foreach ($main_slider as $item)
+                                <div class="computer-data-two">
+                                    <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -252,42 +249,22 @@
             <div class="container b_botom">
                 <div class="row">
                     <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
+
+                        @php
+                            $main_slider = App\Models\product::where('site_id', 'Related_news')
+                                ->orderBy('id', 'DESC')
+                                ->get();
+                        @endphp
+
+                        @foreach ($main_slider as $item)
+                            <div class="tech-data-area text-center">
+                                <img src="{{ asset($item->product_img) }}" alt="" style="height: 200px">
+                                <a href=" {{ url('singlePost/' . $item->id) }} "> {{ $item->product_name }}</a>
+                            </div>
+                        @endforeach
+
                     </div>
 
-                    <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="tech-data-area text-center">
-                            <img src="./images/sportOne.webp" alt="" class="img-fluid">
-                            <a href="" class="linl-mt">মহান বিজয় দিবস উপলক্ষে বিটিআরসিতে আলোচনা সভা</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

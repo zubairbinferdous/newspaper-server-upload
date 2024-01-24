@@ -28,6 +28,8 @@ class categoryController extends Controller
 
         catagory::insert([
             'cate_name' => $request->cate_name,
+            'menu_active' => $request->menu,
+            'section_active' => $request->section,
             'category_img' => $save_url,
         ]);
 
@@ -37,7 +39,7 @@ class categoryController extends Controller
 
     public function allCategory()
     {
-        $category = catagory::latest()->get();
+        $category = catagory::latest()->orderBy('id', 'DESC')->get();
         return view('admin.category.all_category', compact('category'));
     }
 
@@ -66,6 +68,16 @@ class categoryController extends Controller
         Toastr::info('Messages in here', 'Title', ['positionClass' => 'toast-top-right']);
 
         return redirect()->route('allCategory');
+    }
+
+
+    public function menu(Request $request)
+    {
+        $cateId = $request->id;
+        catagory::findOrFail($cateId)->update([
+            'menu_active' => $request->menu,
+        ]);
+        return redirect()->back();
     }
 
 
